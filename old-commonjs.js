@@ -1,0 +1,50 @@
+module.exports = {
+  plugins: [ 'node' ],
+  'extends': [ 'plugin:node/recommended-script' ],
+  env: { commonjs: true },
+  settings: {
+    node: {
+      allowModules: [],
+      resolvePaths: [ __dirname ],
+      tryExtensions: [ '.js', '.mjs', '.cjs' ]
+    }
+  },
+  rules: {
+    'node/handle-callback-err': 'error',
+    'node/no-callback-literal': 'error',
+    'node/no-exports-assign': 'error',
+    'node/no-extraneous-import': 'error',
+    'node/no-missing-import': 'error',
+    'node/no-extraneous-require': 'error',
+    'node/no-missing-require': 'error',
+    'node/no-new-require': 'error',
+    'node/no-path-concat': 'error',
+    'node/no-process-exit': 'error',
+    'node/no-unpublished-bin': 'error',
+    'node/no-unpublished-import': 'error',
+    'node/no-unpublished-require': 'error',
+    'node/no-unsupported-features/es-builtins': 'error',
+    'node/no-unsupported-features/es-syntax': 'error',
+    'node/no-unsupported-features/node-builtins': 'error',
+    'node/process-exit-as-throw': 'error',
+    'node/shebang': 'error',
+    'node/no-deprecated-api': 'error',
+    'node/callback-return': 'error',
+    'node/exports-style': [ 'error', 'module.exports', { allowBatchAssign: true } ],
+    'node/file-extension-in-import': [ 'error', 'always' ],
+    'node/global-require': 'error',
+    'node/no-mixed-requires': [ 'error', { grouping: true, allowCall: true } ],
+    'node/no-process-env': 'error',
+    'node/no-restricted-import': 'off',
+    'node/no-restricted-require': 'off',
+    'node/no-sync': 'error',
+    'node/prefer-global/buffer': [ 'error', 'always' ],
+    'node/prefer-global/console': [ 'error', 'always' ],
+    'node/prefer-global/process': [ 'error', 'always' ],
+    'node/prefer-global/text-decoder': [ 'error', 'always' ],
+    'node/prefer-global/url-search-params': [ 'error', 'always' ],
+    'node/prefer-global/url': [ 'error', 'always' ],
+    'node/prefer-promises/dns': 'error',
+    'node/prefer-promises/fs': 'error'
+  }
+}
