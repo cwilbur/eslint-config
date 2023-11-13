@@ -1,34 +1,32 @@
 import htmlPlugin from '@html-eslint/eslint-plugin'
 import htmlParser from '@html-eslint/parser'
-import { FlatCompat } from '@eslint/eslintrc'
 import globals from 'globals'
-import path from 'path'
-import { fileURLToPath } from 'url'
-const __filename = fileURLToPath(import.meta.url)
-const __dirname = path.dirname(__filename)
 
-const eslintrc = new FlatCompat({
-  baseDirectory: __dirname
-})
-
-// can't start a variable name with an @
-
-// const recommendedRules = {}
-// Object.keys(htmlPlugin.configs.recommended.rules).forEach(ruleName => {
-//   const newName = ruleName.replace(/^@html-eslint/, 'html')
-//   recommendedRules[newName] =
-// })
-
-const htmlConfig = {
-  files: [ '**/*.html' ],
-  languageOptions: {
-    parser: htmlParser,
-    globals: {
-      ...globals.browser
-    }
-  },
-  plugins: { '@html-eslint': htmlPlugin },
-  ...htmlPlugin.configs.recommended
+htmlParser.meta = {
+  name: '@html-eslint/parser',
+  version: '0.2.0'
 }
+
+const htmlFiles = [ '**/*.html', '**/*.htm' ]
+
+const htmlConfig = [
+  {
+    files: htmlFiles,
+    plugins: {
+      '@html-eslint': htmlPlugin
+    },
+    languageOptions: {
+      parser: htmlParser,
+      globals: {
+        ...globals.browser,
+        ...globals.es2021
+      }
+    },
+    rules: {
+      ...htmlPlugin.configs.recommended.rules,
+      '@html-eslint/indent': [ 'error', 2 ]
+    }
+  }
+]
 
 export default htmlConfig

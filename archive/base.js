@@ -1,35 +1,80 @@
-/* eslint quote-props: [ "error", "always" ] */
-
-import globals from 'globals'
-
-const ignores = [
-  '/node_modules'
-]
-
-const allFiles = [
-  '**/*.js',
-  '**/*.cjs',
-  '**/*.mjs',
-  '**/*.html',
-  '**/*.htm'
-]
-
-const languageOptions = {
-  'parserOptions': {
-    'ecmaVersion': 'latest',
-    'sourceType': 'module'
-  },
-  'globals': { ...globals.browser, ...globals.es2021 }
+const eslintComments = {
+  'eslint-comments/disable-enable-pair': [ 'error', { allowWholeFile: true } ],
+  'eslint-comments/no-aggregating-enable': 'error',
+  'eslint-comments/no-duplicate-disable': 'error',
+  'eslint-comments/no-restricted-disable': 'off',
+  'eslint-comments/no-unlimited-disable': 'error',
+  'eslint-comments/no-unused-disable': 'error',
+  'eslint-comments/no-unused-enable': 'error',
+  'eslint-comments/no-use': 'off',
+  'eslint-comments/require-description': 'error'
 }
 
-// the cargo cult errors were in the eslintrc that I adopted
-// when I started copying my eslintrc from project to project,
-// tuning it bit by bit.  I have no idea what their original
-// source was; they are here not because they were an intentiona
-// part of my project but because I like the results they
-// produce in aggregate.
+const eslintRecommended = {
+  'constructor-super': 'error',
+  'for-direction': 'error',
+  'getter-return': 'error',
+  'no-async-promise-executor': 'error',
+  'no-case-declarations': 'error',
+  'no-class-assign': 'error',
+  'no-compare-neg-zero': 'error',
+  'no-cond-assign': 'error',
+  'no-const-assign': 'error',
+  'no-constant-condition': 'error',
+  'no-control-regex': 'error',
+  'no-debugger': 'error',
+  'no-delete-var': 'error',
+  'no-dupe-args': 'error',
+  'no-dupe-class-members': 'error',
+  'no-dupe-else-if': 'error',
+  'no-dupe-keys': 'error',
+  'no-duplicate-case': 'error',
+  'no-empty': 'error',
+  'no-empty-character-class': 'error',
+  'no-empty-pattern': 'error',
+  'no-ex-assign': 'error',
+  'no-extra-boolean-cast': 'error',
+  'no-extra-semi': 'error',
+  'no-fallthrough': 'error',
+  'no-func-assign': 'error',
+  'no-global-assign': 'error',
+  'no-import-assign': 'error',
+  'no-inner-declarations': 'error',
+  'no-invalid-regexp': 'error',
+  'no-irregular-whitespace': 'error',
+  'no-loss-of-precision': 'error',
+  'no-misleading-character-class': 'error',
+  'no-mixed-spaces-and-tabs': 'error',
+  'no-new-symbol': 'error',
+  'no-nonoctal-decimal-escape': 'error',
+  'no-obj-calls': 'error',
+  'no-octal': 'error',
+  'no-prototype-builtins': 'error',
+  'no-redeclare': 'error',
+  'no-regex-spaces': 'error',
+  'no-self-assign': 'error',
+  'no-setter-return': 'error',
+  'no-shadow-restricted-names': 'error',
+  'no-sparse-arrays': 'error',
+  'no-this-before-super': 'error',
+  'no-undef': 'error',
+  'no-unexpected-multiline': 'error',
+  'no-unreachable': 'error',
+  'no-unsafe-finally': 'error',
+  'no-unsafe-negation': 'error',
+  'no-unsafe-optional-chaining': 'error',
+  'no-unused-labels': 'error',
+  'no-unused-vars': 'error',
+  'no-useless-backreference': 'error',
+  'no-useless-catch': 'error',
+  'no-useless-escape': 'error',
+  'no-with': 'error',
+  'require-yield': 'error',
+  'use-isnan': 'error',
+  'valid-typeof': 'error'
+}
 
-const cargoCultOff = [
+const unknownSourceOff = [
   'capitalized-comments',
   'func-names',
   'multiline-comment-style',
@@ -45,13 +90,14 @@ const cargoCultOff = [
   'sort-keys'
 ]
 
-const cargoCultErrors = [
+const unknownSourceErrors = [ 'accessor-pairs',
   'array-callback-return',
   'arrow-body-style',
   'block-scoped-var',
   'block-spacing',
   'brace-style',
   'camelcase',
+  'class-methods-use-this',
   'complexity',
   'computed-property-spacing',
   'consistent-return',
@@ -64,6 +110,7 @@ const cargoCultErrors = [
   'eqeqeq',
   'func-name-matching',
   'generator-star-spacing',
+  'grouped-accessor-pairs',
   'guard-for-in',
   'id-denylist',
   'id-match',
@@ -76,6 +123,7 @@ const cargoCultErrors = [
   'max-depth',
   'max-lines-per-function',
   'max-nested-callbacks',
+  'max-statements',
   'max-statements-per-line',
   'new-parens',
   'no-alert',
@@ -176,27 +224,23 @@ const cargoCultErrors = [
   'vars-on-top',
   'wrap-iife',
   'wrap-regex',
-  'yield-star-spacing'
-]
+  'yield-star-spacing' ]
 
-const cargoCult = Object.fromEntries([
-  ...cargoCultOff.map(key => [ key, 'off' ]),
-  ...cargoCultErrors.map(key => [ key, 'error' ])
+const unknownSourceRules = Object.fromEntries([
+  ...unknownSourceOff.map(key => [ key, 'off' ]),
+  ...unknownSourceErrors.map(key => [ key, 'error' ])
 ])
 
-/* eslint object-property-newline: off,
-      object-curly-newline: off -- each rule gets one line */
-
-const cwilbur = {
+const myPreferences = {
   'accessor-pairs': 'error',
   'array-bracket-newline': [ 'error', 'consistent' ],
-  'array-bracket-spacing': [ 'error', 'always', { 'objectsInArrays': true, 'arraysInArrays': true } ],
+  'array-bracket-spacing': [ 'error', 'always', { objectsInArrays: true, arraysInArrays: true } ],
   'array-element-newline': [ 'error', 'consistent' ],
   'arrow-parens': [ 'error', 'as-needed' ],
-  'arrow-spacing': [ 'error', { 'before': true, 'after': true } ],
-  'class-methods-use-this': 'warn',
+  'arrow-spacing': [ 'error', { before: true, after: true } ],
+  'class-methods-use-this': 'warn' ,
   'comma-dangle': [ 'error', 'never' ],
-  'comma-spacing': [ 'error', { 'after': true, 'before': false } ],
+  'comma-spacing': [ 'error', { after: true, before: false } ],
   'comma-style': [ 'error', 'last' ],
   'curly': [ 'error', 'multi-line' ],
   'dot-location': [ 'error', 'property' ],
@@ -205,70 +249,52 @@ const cwilbur = {
   'function-call-argument-newline': [ 'error', 'consistent' ],
   'function-paren-newline': [ 'error', 'consistent' ],
   'grouped-accessor-pairs': 'error',
-  'id-length': [ 'error', { 'min': 2, 'exceptions': [ '_', 'i' ] } ],
+  'id-length': [ 'error', { min: 2, exceptions: [ '_', 'i' ] } ],
   'implicit-arrow-linebreak': [ 'error', 'beside' ],
-  'indent': [ 'error', 2, { 'flatTernaryExpressions': true, 'offsetTernaryExpressions': true, 'SwitchCase': 1 } ],
-  'keyword-spacing': [ 'error', { 'before': true, 'after': true } ],
+  'indent': [ 'error', 2, { flatTernaryExpressions: true, offsetTernaryExpressions: true, SwitchCase: 1 } ],
+  'keyword-spacing': [ 'error', { before: true, after: true } ],
   'line-comment-position': 'off',
   'linebreak-style': [ 'error', 'unix' ],
-  'lines-between-class-members': [ 'error', { 'enforce': [
-    { 'blankLine': 'always', 'prev': 'method', 'next': '*' },
-    { 'blankLine': 'never', 'prev': 'field', 'next': 'field' }
-  ] } ],
-  'max-len': [ 'error', { 'code': 120, 'ignoreUrls': true, 'ignoreStrings': true, 'ignoreTemplateLiterals': true } ],
+  'max-len': [ 'error', { code: 120, ignoreUrls: true, ignoreStrings: true, ignoreTemplateLiterals: true } ],
   'max-lines': [ 'error', 500 ],
   'max-params': [ 'error', 5 ],
   'max-statements': [ 'error', 20 ],
   'multiline-ternary': [ 'error', 'always-multiline' ],
-  'newline-per-chained-call': [ 'error', { 'ignoreChainWithDepth': 3 } ],
+  'newline-per-chained-call': [ 'error', { ignoreChainWithDepth: 3 } ],
   'no-await-in-loop': 'off',
   'no-console': 'error',
-  'no-dupe-keys': 'error',
-  'no-multiple-empty-lines': [ 'error', { 'max': 1 } ],
-  'no-param-reassign': [ 'error', { 'props': false } ],
-  'no-plusplus': [ 'error', { 'allowForLoopAfterthoughts': true } ],
+  'no-multiple-empty-lines': [ 'error', { max: 1 } ],
+  'no-param-reassign': [ 'error', { props: false } ],
+  'no-plusplus': [ 'error', { allowForLoopAfterthoughts: true } ],
   'no-return-await': 'error',
   'no-underscore-dangle': 'off',
-  'no-unused-vars': [ 'warn', { 'varsIgnorePattern': '^_', 'args': 'none' } ],
+  'no-unused-vars': [ 'warn', { varsIgnorePattern: '^_', args: 'none' } ],
   'no-warning-comments': 'off',
-  'object-curly-spacing': [ 'error', 'always', { 'arraysInObjects': true, 'objectsInObjects': true } ],
+  'object-curly-spacing': [ 'error', 'always', { arraysInObjects: true, objectsInObjects: true } ],
   'operator-linebreak': [ 'error', 'before' ],
-  'quote-props': [ 'error', 'as-needed', { 'keywords': false } ],
-  'quotes': [ 'error', 'single', { 'avoidEscape': true } ],
+  'quote-props': [ 'error', 'consistent-as-needed', { keywords: false } ],
+  'quotes': [ 'error', 'single', { avoidEscape: true } ],
   'semi': [ 'error', 'never' ],
   'space-before-blocks': [ 'error', 'always' ],
   'space-before-function-paren': [ 'error', 'always' ],
   'space-in-parens': [ 'error', 'never' ],
-  'spaced-comment': [ 'error', 'always', { 'markers': [ '/' ] } ],
+  'spaced-comment': [ 'error', 'always', { markers: [ '/' ] } ],
   'strict': 'off',
-  'switch-colon-spacing': [ 'error', { 'before': false, 'after': true } ],
+  'switch-colon-spacing': [ 'error', { before: false, after: true } ],
   'template-curly-spacing': [ 'error', 'always' ],
   'unicode-bom': [ 'error', 'never' ],
   'yoda': [ 'error', 'never' ]
 }
 
-const rules = {
-  ...cargoCult,
-  ...cwilbur
-}
-
-const config = {
-  ignores,
-  languageOptions,
-  rules
-}
-
-const eslintSpecials = [
-  {
-    'files': [ 'eslint.config.js' ],
-    'languageOptions': {
-      'globals': { ...globals.node }
-    },
-    'rules': {
-      'quote-props': [ 'error', 'always' ]
-    }
+module.exports = {
+  root: true,
+  plugins: [ 'eslint-comments', 'json', 'html' ],
+  rules: {
+    ...eslintComments,
+    ...unknownSourceRules,
+    ...eslintRecommended,
+    ...myPreferences
   }
-]
+}
 
-export default [ config, ...eslintSpecials ]
-export { allFiles, ignores, languageOptions, rules, eslintSpecials }
+//

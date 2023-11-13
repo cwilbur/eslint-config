@@ -1,14 +1,17 @@
-import Import from 'eslint-plugin-import'
-import ImportNewlines from 'eslint-plugin-import-newlines'
+import importPlugin from 'eslint-plugin-import'
+import importNewlines from 'eslint-plugin-import-newlines'
 
 const esmStanzas = [
   {
-    files: [ '**/**.[cm]?js' ],
     plugins: {
-      import: Import,
-      'import-new-lines': ImportNewlines
+      import: importPlugin,
+      'import-newlines': importNewlines
     },
     rules: {
+      ...importPlugin.configs.recommended.rules,
+      ...importPlugin.configs.warnings.rules,
+      ...importPlugin.configs.errors.rules,
+
       'import/no-unresolved': 'error',
       'import/named': 'error',
       'import/default': 'error',
@@ -43,6 +46,7 @@ const esmStanzas = [
       'import/no-import-module-exports': 'error',
 
       // Style guide
+
       'import/first': 'error',
       'import/exports-last': 'error',
       'import/no-duplicates': 'error',
@@ -66,6 +70,7 @@ const esmStanzas = [
       'import/dynamic-import-chunkname': 'warn',
 
       'import-newlines/enforce': [ 'error', { items: 8, 'max-len': 120, semi: false } ]
+
     }
   }
 ]
