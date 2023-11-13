@@ -1,3 +1,5 @@
 .history/
 node_modules/
 .envrc
+archive
+pnpm-lock.yaml

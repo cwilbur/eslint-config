@@ -11,8 +11,8 @@ const config = [
   ...eslintRecommended,
   ...core,
   ...html,
-  ...vue,
-  ...esm
+  ...vue
+  // ...esm
 ]
 
 export default config
