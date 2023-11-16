@@ -2,6 +2,7 @@ import core from './stanzas/core.js'
 import html from './stanzas/html.js'
 import vue from './stanzas/vue.js'
 import esm from './stanzas/esm.js'
+import json from './stanzas/json.js'
 
 import js from '@eslint/js'
 
@@ -12,6 +13,7 @@ const config = [
   ...core,
   ...html,
   ...vue
+  // ...json
   // ...esm
 ]
 

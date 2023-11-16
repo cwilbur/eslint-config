@@ -236,6 +236,13 @@ const cwilbur = {
   'quote-props': [ 'error', 'as-needed', { 'keywords': false } ],
   'quotes': [ 'error', 'single', { 'avoidEscape': true } ],
   'semi': [ 'error', 'never' ],
+  'sort-imports': [ 'error', {
+    'ignoreCase': true,
+    'ignoreDeclarationSort': false,
+    'ignoreMemberSort': false,
+    'memberSyntaxSortOrder': [ 'none', 'all', 'multiple', 'single' ],
+    'allowSeparatedGroups': true
+  } ],
   'space-before-blocks': [ 'error', 'always' ],
   'space-before-function-paren': [ 'error', 'always' ],
   'space-in-parens': [ 'error', 'never' ],
