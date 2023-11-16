@@ -1,8 +1,8 @@
 {
-  "name": "eslint-config-cwilbur",
-  "version": "0.2.6",
+  "name": "@cwwilbur/eslint-config",
+  "version": "0.3.1",
   "description": "My eslint configuration",
-  "license": "UNLICENSED",
+  "license": "BSD-3-Clause",
   "author": "Charlton Wilbur <cwilbur@chromatico.net>",
   "type": "commonjs",
   "main": "index.js",
@@ -12,6 +12,7 @@
   "dependencies": {
     "@babel/core": "^7.22.5",
     "@babel/eslint-parser": "^7.22.5",
+    "@cwwilbur/eslint-config": "link:",
     "@html-eslint/eslint-plugin": "^0.13.2",
     "@html-eslint/parser": "^0.13.2",
     "@open-wc/eslint-config": "^8.0.2",

@@ -1,7 +1,7 @@
 module.exports = {
   plugins: [ 'import', 'import-newlines' ],
   rules: {
-  // Static analysis
+    // Static analysis
 
     'import/no-unresolved': 'error',
     'import/named': 'error',

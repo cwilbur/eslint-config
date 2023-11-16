@@ -238,7 +238,7 @@ const myPreferences = {
   'array-element-newline': [ 'error', 'consistent' ],
   'arrow-parens': [ 'error', 'as-needed' ],
   'arrow-spacing': [ 'error', { before: true, after: true } ],
-  'class-methods-use-this': 'warn' ,
+  'class-methods-use-this': 'warn',
   'comma-dangle': [ 'error', 'never' ],
   'comma-spacing': [ 'error', { after: true, before: false } ],
   'comma-style': [ 'error', 'last' ],

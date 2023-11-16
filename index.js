@@ -1,10 +1,11 @@
+
 module.exports = {
   extends: [
-    'cwilbur/base',
-    'cwilbur/json',
-    'cwilbur/esm',
-    'cwilbur/babel',
-    'cwilbur/dev'
+    '@cwwilbur/eslint-config/base',
+    '@cwwilbur/eslint-config/json',
+    '@cwwilbur/eslint-config/esm',
+    // '@cwwilbur/eslint-config/babel',
+    '@cwwilbur/eslint-config/dev'
   ]
 }
 
