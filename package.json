@@ -12,7 +12,6 @@
   "dependencies": {
     "@babel/core": "^7.22.5",
     "@babel/eslint-parser": "^7.22.5",
-    "@cwwilbur/eslint-config": "link:",
     "@html-eslint/eslint-plugin": "^0.13.2",
     "@html-eslint/parser": "^0.13.2",
     "@open-wc/eslint-config": "^8.0.2",

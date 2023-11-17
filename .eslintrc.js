@@ -8,8 +8,7 @@ module.exports = {
     sourceType: 'script'
   },
   extends: [
-    'eslint:recommended',
-    '@cwwilbur/eslint-config'
+    'eslint:recommended'
   ],
   rules: {
     'import/no-unused-modules': 'off',

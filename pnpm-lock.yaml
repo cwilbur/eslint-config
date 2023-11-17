@@ -11,9 +11,6 @@ dependencies:
   '@babel/eslint-parser':
     specifier: ^7.22.5
     version: 7.22.5(@babel/core@7.22.5)(eslint@8.43.0)
-  '@cwwilbur/eslint-config':
-    specifier: 'link:'
-    version: 'link:'
   '@html-eslint/eslint-plugin':
     specifier: ^0.13.2
     version: 0.13.2
