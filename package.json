@@ -1,6 +1,6 @@
 {
   "name": "@cwwilbur/eslint-config",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "description": "My eslint configuration",
   "license": "BSD-3-Clause",
   "author": "Charlton Wilbur <cwilbur@chromatico.net>",
