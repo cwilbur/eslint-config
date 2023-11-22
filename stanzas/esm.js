@@ -1,8 +1,8 @@
-import importPlugin from 'eslint-plugin-import'
-import importNewlines from 'eslint-plugin-import-newlines'
-import { FlatCompat } from '@eslint/eslintrc'
 import path from 'path'
 import { fileURLToPath } from 'url'
+import { FlatCompat } from '@eslint/eslintrc'
+import importPlugin from 'eslint-plugin-import'
+import importNewlines from 'eslint-plugin-import-newlines'
 
 // mimic CommonJS variables -- not needed if using CommonJS
 const __filename = fileURLToPath(import.meta.url)
@@ -15,18 +15,18 @@ const compat = new FlatCompat({
 const esmStanzas = [
   {
     plugins: {
-      'import': importPlugin,
+      import: importPlugin,
       'import-newlines': importNewlines
     },
     // settings block from https://github.com/import-js/eslint-plugin-import/pull/2829
     settings: {
 
-      "import/parsers": {
-         espree: [".js", ".cjs", ".mjs", ".jsx"],
-         'vue-eslint-parser': [ '*.vue' ]
-       },
-      "import/resolver": {
-        node: true,
+      'import/parsers': {
+        espree: [ '.js', '.cjs', '.mjs', '.jsx' ],
+        'vue-eslint-parser': [ '*.vue' ]
+      },
+      'import/resolver': {
+        node: true
       }
     },
     rules: {

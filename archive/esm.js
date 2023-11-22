@@ -59,6 +59,6 @@ module.exports = {
     'import/group-exports': 'error',
     'import/dynamic-import-chunkname': 'warn',
 
-    'import-newlines/enforce': [ 'error', { 'items': 8, 'max-len': 120, 'semi': false } ]
+    'import-newlines/enforce': [ 'error', { items: 8, 'max-len': 120, semi: false } ]
   }
 }

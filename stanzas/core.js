@@ -1,7 +1,7 @@
 /* eslint quote-props: [ "error", "always" ] */
 
-import globals from 'globals'
 import * as espree from 'espree'
+import globals from 'globals'
 
 const ignores = [
   '/node_modules'

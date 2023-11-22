@@ -1,4 +1,4 @@
-import config, { core, html, vue, esm } from './index.js'
+import config, { core, esm, html, vue } from './index.js'
 
 export default config
 export { core, html, vue, esm }

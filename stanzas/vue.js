@@ -1,6 +1,6 @@
 import vuePlugin from 'eslint-plugin-vue'
-import vueParser from 'vue-eslint-parser'
 import globals from 'globals'
+import vueParser from 'vue-eslint-parser'
 
 let aggregate = {}
 const vueRules = {}
