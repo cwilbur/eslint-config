@@ -29,6 +29,7 @@ vueRules.essentials = {
 const vueStanzas = [
   {
     files: [ '**/*.vue' ],
+    processor: vuePlugin.processors['.vue'],
     languageOptions: {
       parser: vueParser,
       parserOptions: { ecmaVersion: 2020, sourceType: 'module' },

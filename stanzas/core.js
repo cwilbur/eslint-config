@@ -1,6 +1,7 @@
 /* eslint quote-props: [ "error", "always" ] */
 
 import globals from 'globals'
+import * as espree from 'espree'
 
 const ignores = [
   '/node_modules'
@@ -15,6 +16,7 @@ const allFiles = [
 ]
 
 const languageOptions = {
+  'parser': espree,
   'parserOptions': {
     'ecmaVersion': 'latest',
     'sourceType': 'module'
