@@ -1,4 +1,3 @@
-import config, { core, esm, html, vue } from './index.js'
+import config from './flat/index.cjs'
 
 export default config
-export { core, html, vue, esm }

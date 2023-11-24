@@ -1,35 +1,21 @@
-/* eslint quote-props: [ "error", "always" ] */
+/*
 
-import * as espree from 'espree'
-import globals from 'globals'
+⁡⁣⁣⁢​‌‌‍Core Rules
+​⁡
+⁡⁣⁣⁢These are core ESLint rules, and should apply to any Javascript.
 
-const ignores = [
-  '/node_modules'
-]
+These rule configurations come from a variety of sources, as my
+eslint configuration has been trnasplanted from project to
+project over the course of a decade.
 
-const allFiles = [
-  '**/*.js',
-  '**/*.cjs',
-  '**/*.mjs',
-  '**/*.html',
-  '**/*.htm'
-]
-
-const languageOptions = {
-  'parser': espree,
-  'parserOptions': {
-    'ecmaVersion': 'latest',
-    'sourceType': 'module'
-  },
-  'globals': { ...globals.browser, ...globals.es2021 }
-}
-
-// the cargo cult errors were in the eslintrc that I adopted
-// when I started copying my eslintrc from project to project,
-// tuning it bit by bit.  I have no idea what their original
-// source was; they are here not because they were an intentiona
-// part of my project but because I like the results they
-// produce in aggregate.
+⁡⁣⁣⁢the cargo cult errors were in the eslintrc that I adopted
+when I started copying my eslintrc from project to project,
+tuning it bit by bit.  I have no idea what their original
+source was; they are here not because they were an intentiona
+part of my project but because I like the results they
+produce in aggregate.
+⁡⁡⁡
+*/
 
 const cargoCultOff = [
   'capitalized-comments',
@@ -186,8 +172,11 @@ const cargoCult = Object.fromEntries([
   ...cargoCultErrors.map(key => [ key, 'error' ])
 ])
 
-/* eslint object-property-newline: off,
-      object-curly-newline: off -- each rule gets one line */
+/*
+
+⁡⁣⁣⁢These rules are a summary of my tastes.
+⁡
+*/
 
 const cwilbur = {
   'accessor-pairs': 'error',
@@ -256,28 +245,16 @@ const cwilbur = {
   'yoda': [ 'error', 'never' ]
 }
 
+const metadata = {
+  'environments': [ 'browser', 'es2021' ],
+  'parser': 'espree'
+}
+
+const ruleConfigs = { cargoCult, cwilbur }
+
 const rules = {
   ...cargoCult,
   ...cwilbur
 }
 
-const config = {
-  ignores,
-  languageOptions,
-  rules
-}
-
-const eslintSpecials = [
-  {
-    'files': [ 'eslint.config.js' ],
-    'languageOptions': {
-      'globals': { ...globals.node }
-    },
-    'rules': {
-      'quote-props': [ 'error', 'always' ]
-    }
-  }
-]
-
-export default [ config, ...eslintSpecials ]
-export { allFiles, ignores, languageOptions, rules, eslintSpecials }
+module.exports = { metadata, rules, ruleConfigs }
