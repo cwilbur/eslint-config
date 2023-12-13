@@ -242,7 +242,7 @@ const myPreferences = {
   'comma-dangle': [ 'error', 'never' ],
   'comma-spacing': [ 'error', { after: true, before: false } ],
   'comma-style': [ 'error', 'last' ],
-  'curly': [ 'error', 'multi-line' ],
+  curly: [ 'error', 'multi-line' ],
   'dot-location': [ 'error', 'property' ],
   'func-call-spacing': [ 'error', 'never' ],
   'func-style': 'off',
@@ -251,7 +251,7 @@ const myPreferences = {
   'grouped-accessor-pairs': 'error',
   'id-length': [ 'error', { min: 2, exceptions: [ '_', 'i' ] } ],
   'implicit-arrow-linebreak': [ 'error', 'beside' ],
-  'indent': [ 'error', 2, { flatTernaryExpressions: true, offsetTernaryExpressions: true, SwitchCase: 1 } ],
+  indent: [ 'error', 2, { flatTernaryExpressions: true, offsetTernaryExpressions: true, SwitchCase: 1 } ],
   'keyword-spacing': [ 'error', { before: true, after: true } ],
   'line-comment-position': 'off',
   'linebreak-style': [ 'error', 'unix' ],
@@ -273,17 +273,17 @@ const myPreferences = {
   'object-curly-spacing': [ 'error', 'always', { arraysInObjects: true, objectsInObjects: true } ],
   'operator-linebreak': [ 'error', 'before' ],
   'quote-props': [ 'error', 'consistent-as-needed', { keywords: false } ],
-  'quotes': [ 'error', 'single', { avoidEscape: true } ],
-  'semi': [ 'error', 'never' ],
+  quotes: [ 'error', 'single', { avoidEscape: true } ],
+  semi: [ 'error', 'never' ],
   'space-before-blocks': [ 'error', 'always' ],
   'space-before-function-paren': [ 'error', 'always' ],
   'space-in-parens': [ 'error', 'never' ],
   'spaced-comment': [ 'error', 'always', { markers: [ '/' ] } ],
-  'strict': 'off',
+  strict: 'off',
   'switch-colon-spacing': [ 'error', { before: false, after: true } ],
   'template-curly-spacing': [ 'error', 'always' ],
   'unicode-bom': [ 'error', 'never' ],
-  'yoda': [ 'error', 'never' ]
+  yoda: [ 'error', 'never' ]
 }
 
 module.exports = {
